@@ -11,11 +11,11 @@
         image_template: mysql-5.7
 
     deploy:
-        context: alpha/DEV
+        context: mushraf6461/DEV
         type: statefulset
         replicas: 1
-        resources: x-large
         ingress: none
+        resources: x-large
         port:
         - 3306
 
@@ -23,17 +23,17 @@
       - claim: mysql-data
         mount: /var/lib/mysql
         name: data
-        size: 5Gi
+        size: 250Gi
       - claim: mysql-backup
         mount: /appz/backup
         name: backup
-        size: 5Gi
+        size: 250Gi
 
     properties:
         MYSQL_ROOT_PASSWORD:
           vault: MYSQL_ROOT_PASSWORD_KEY
-        MYSQL_SPRINGBOOTWEB_PASSWORD:
-          vault: MYSQL_SPRINGBOOTWEB_PASSWORD
-        MYSQL_WORDPRESS_PASSWORD:
-          vault: MYSQL_WORDPRESS_PASSWORD
-        revision : 25
+        MYSQL_TRACKER_PASSWORD:
+          vault: MYSQL_TRACKER_PASSWORD
+        MYSQL_ECLOUDCONTROL_PASSWORD:
+          vault: MYSQL_ECLOUDCONTROL_PASSWORD
+        revision : 34
